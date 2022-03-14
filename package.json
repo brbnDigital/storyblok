@@ -1,6 +1,8 @@
 {
   "name": "@brbndigital/storyblok",
   "version": "1.0.0",
+  "author": "Sebastian Inman <sebastian@brbndigital.com> (https://www.brbndigital.com)",
+  "license": "MIT",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -14,8 +16,6 @@
     "url": "git+https://github.com/brbnDigital/storyblok.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/brbnDigital/storyblok/issues"
   },
