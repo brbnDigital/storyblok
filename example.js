@@ -1,3 +1,3 @@
-const { GenerateTypes } = require("./lib")
+const { GenerateTypes } = require("@brbndigital/storyblok")
 
 GenerateTypes()
