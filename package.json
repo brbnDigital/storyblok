@@ -9,7 +9,8 @@
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "watch": "tsc --watch",
-    "publish": "npm publish --access=public"
+    "publish": "npm publish --access=public",
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",

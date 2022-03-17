@@ -5,8 +5,8 @@ import CamelCase from "camelcase"
 import { format } from "prettier"
 import { compile } from "json-schema-to-typescript"
 
-import StoryblokClient from "storyblok-js-client"
-import { STORYBLOK_API, ACCESS_TOKEN, SPACE_ID } from "../variables"
+import { client } from "../client"
+import { SPACE_ID } from "../variables"
 
 type GeneratorOptions = {
     outputFile?: string
@@ -20,8 +20,6 @@ const DEFAULT_OPTIONS: Partial<GeneratorOptions> = {
 
 export async function GenerateTypes(options?: GeneratorOptions) {
 
-    if(!ACCESS_TOKEN || !SPACE_ID) return Promise.reject("Storyblok Access Token and Space ID are required")
-
     let generatorOptions = {...DEFAULT_OPTIONS, ...options}
 
     let groupUUIDs: any = {}
@@ -29,8 +27,6 @@ export async function GenerateTypes(options?: GeneratorOptions) {
 
     let schema: any[] = []
     let output: string = ""
-
-    let client = new StoryblokClient({ oauthToken: ACCESS_TOKEN }, STORYBLOK_API)
 
     await Generate()
 
@@ -54,8 +50,8 @@ export async function GenerateTypes(options?: GeneratorOptions) {
      * @returns 
      */
     async function GetAllComponentGroups(): Promise<any[]> {
-        let data = await client.get(`spaces/${SPACE_ID}/component_groups`)
-        return data.data.component_groups || []
+        let request = await client.get(`spaces/${SPACE_ID}/component_groups`)
+        return request.data.component_groups || []
     }
 
 
@@ -65,8 +61,8 @@ export async function GenerateTypes(options?: GeneratorOptions) {
      */
 
     async function GetAllComponents(): Promise<any[]> {
-        let data = await client.get(`spaces/${SPACE_ID}/components`)
-        return data.data.components || []
+        let request = await client.get(`spaces/${SPACE_ID}/components`)
+        return request.data.components || []
     }
 
 

@@ -1,3 +1,8 @@
-const { GenerateTypes } = require("@brbndigital/storyblok")
+const { UpdateAsset } = require("@brbndigital/storyblok")
 
-GenerateTypes()
+UpdateAsset(4004459, {
+    title: "THIS IS JUST A TEST",
+    short_filename: "this-is-just-a-test.webp"
+}).then(asset => {
+    console.log(asset)
+})
